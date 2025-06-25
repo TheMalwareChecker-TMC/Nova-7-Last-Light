@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Space Shooter Game</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  #gameCanvas {
+    background: #111;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid white;
+  }
+  #settingsPanel {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    border: 2px solid white;
+    padding: 20px;
+    display: none;
+    z-index: 1000;
+    color: white;
+  }
+
+  #settingsPanel label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  #settingsBtn, #closeSettings {
+    cursor: pointer;
+    background: #444;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 16px;
+    margin: 5px;
+  }
+  #settingsBtn:hover, #closeSettings:hover {
+    background: #666;
+  }
+
+  /* Add CSS for introPanel here */
+  #introPanel {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+  }
+
+  #introContent {
+    background: #111;
+    padding: 30px;
+    max-width: 500px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  #introContent h2 {
+    margin-bottom: 15px;
+  }
+
+  #introContent button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #28a745;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div id="gameContainer">
+  <canvas id="gameCanvas" width="1000" height="800"></canvas>
+</div>
+
+<button id="settingsBtn" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+  Settings
+</button>
+
+<div id="settingsPanel">
+  <h2>Settings</h2>
+  <label>
+    <input type="checkbox" id="toggleMusic" checked />
+    Background Music
+  </label>
+  <label>
+    <input type="checkbox" id="toggleSFX" checked />
+    Sound Effects
+  </label>
+  <button id="closeSettings">Close</button>
+</div>
+
+<!-- Intro panel outside style -->
+<div id="introPanel" style="display:none;">
+  <div id="introContent">
+    <h2>Welcome to Space Shooter</h2>
+    <p>
+Captain’s Log, Final Entry…
+
+This is Captain Orion, commanding officer of the starship Nova-7. If you’re hearing this… you’ve survived. For now.
+
+Earth is no more. It burned in silence. The invaders—cold, mechanical, relentless—descended from deep space. No warning, no demands. Just fire. Our defenses crumbled in hours.
+
+We were part of the last fleet—Task Force Horizon—scrambling to evacuate survivors from the Martian outpost. Seven brave souls stood with me aboard the Nova-7.
+
+Lieutenant Vega, our pilot—she tried to break the blockade over Titan. Took a direct hit to the cockpit… never saw it coming.
+
+Ensign Juno, comms—patched a signal through the jamming, gave us just enough time to warn Alpha Station. Her console exploded right after.
+
+Sergeant Kell, security—held the boarding drones off alone in the engine bay. Bought us time. Lost him in the blast when they breached.
+
+Dr. Lys, our medic—stayed behind in the infirmary to stabilize injured refugees. She locked the doors from the inside…
+
+Engineer Pax—my oldest friend. He rerouted core power manually to restart the jump drive. Radiation cooked him from the inside out.
+
+Scout twins, Rem & Ryn—barely 18. Volunteered to fly the decoy shuttles. Both taken out by a swarm of hunter-killers.
+
+I watched each of them fall. I promised I'd make it matter.
+
+Now it's just you and me. This ship. These guns.
+
+They think we’re broken. That they’ve already won.
+
+Let’s prove them wrong.
+
+Welcome to the resistance, Pilot.
+
+Captain Orion, out.
+    </p>
+    <button id="closeIntroBtn">Start Game</button>
+  </div>
+</div>
+
+<!-- Audio for intro narration -->
+<audio id="introAudio" src="intro_narration.mp3" preload="auto"></audio>
+
+<script src="game.js"></script>
+</body>
+</html>
